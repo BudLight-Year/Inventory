@@ -79,11 +79,20 @@ public class Weapon extends Item {
     @Override
     public int compareTo(Item o) {
         Weapon weapon = (Weapon) o;
-        if (this.damage > weapon.getDamage()){
+        if (this.weaponType < weapon.getWeaponType()){
             return 1;
-        }else if(this.damage < weapon.getDamage()){
+        }else if (this.weaponType > weapon.getWeaponType()){
+            return -1;
+        }else if (this.damage > weapon.getDamage()) {
+            return 1;
+        } else if (this.damage < weapon.getDamage()) {
             return -1;
         }
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "WeaponName: " + name + "  /  Damage: " + damage;
     }
 }

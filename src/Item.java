@@ -8,7 +8,6 @@ public abstract class Item implements Comparable<Item> {
     protected int value;
     protected String name;
 
-
     public abstract int getValue();
     public abstract void setValue(int value);
     public abstract int getType();
