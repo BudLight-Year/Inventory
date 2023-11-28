@@ -14,37 +14,41 @@ public class WeaponCollection {
     public static final String FILE_NAME  = "weapons.csv";
     private static ArrayList<Weapon> weaponCollection = new ArrayList<>();
 
-    private void loadWeapons() throws FileNotFoundException {
+    public static void loadWeapons() throws FileNotFoundException {
         Scanner in = new Scanner(new FileInputStream(FILE_NAME));
         while (in.hasNextLine()) {
             String line = in.nextLine();
             String data[] = line.split(",");
             String name = data[0];
-            int type = 0;
-            if(data[1].equalsIgnoreCase("sword")){
-                type = Weapon.SWORD;
-            }
-            if(data[1].equalsIgnoreCase("dagger")){
-                type = Weapon.DAGGER;
-            }
-            if(data[1].equalsIgnoreCase("spear")){
-                type = Weapon.SPEAR;
-            }
-            if(data[1].equalsIgnoreCase("bow")){
-                type = Weapon.BOW;
-            }
-            if(data[1].equalsIgnoreCase("wand")){
-                type = Weapon.WAND;
-            }
+            int type = getType(data[1]);
             int value = Integer.parseInt(data[2]);
             int damage = Integer.parseInt(data[3]);
-            Weapon weapon = new Weapon(name, type, value, damage);
-            weaponCollection.add(weapon);
+            weaponCollection.add(new Weapon(name, type, value, damage));
         }
         in.close();
     }
 
-    public void saveWeapons() throws FileNotFoundException {
+    protected static int getType(String data) {
+        int type = 5;
+        if(data.equalsIgnoreCase("sword")){
+            type = Weapon.SWORD;
+        }
+        if(data.equalsIgnoreCase("dagger")){
+            type = Weapon.DAGGER;
+        }
+        if(data.equalsIgnoreCase("spear")){
+            type = Weapon.SPEAR;
+        }
+        if(data.equalsIgnoreCase("bow")){
+            type = Weapon.BOW;
+        }
+        if(data.equalsIgnoreCase("wand")){
+            type = Weapon.WAND;
+        }
+        return type;
+    }
+
+    public static void saveWeapons() throws FileNotFoundException {
         PrintStream out = new PrintStream(new FileOutputStream(FILE_NAME));
         Iterator<Weapon> it = weaponCollection.iterator();
         while (it.hasNext()) {
@@ -60,5 +64,9 @@ public class WeaponCollection {
             out.println(weapon.getName() + "," + weaponType + "," + weapon.getValue() + "," + weapon.getDamage());
         }
         out.close();
+    }
+
+    public static ArrayList<Weapon> getWeaponCollection() {
+        return weaponCollection;
     }
 }

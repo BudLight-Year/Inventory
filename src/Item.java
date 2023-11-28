@@ -3,7 +3,7 @@ package src;
 public abstract class Item implements Comparable<Item> {
     public static final int WEAPON = 0;
     public static final int ARMOR = 1;
-    public static final int POTION = 2;
+    public static final int CONSUMABLE = 2;
     protected int type;
     protected int value;
     protected String name;

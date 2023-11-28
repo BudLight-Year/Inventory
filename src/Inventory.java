@@ -19,30 +19,11 @@ public class Inventory {
         }
     }
     public static void storeItem(Item item){
-        inventory[item.type].addLast(item);
+        inventory[item.getType()].addLast(item);
     }
     public static void storeItems(Item item, Item item2){
         storeItem(item);
         storeItem(item2);
-    }
-
-
-    public static void equipWeapon(int index){
-        for (int i = 0; i < inventory[0].size(); i++){
-            if (i <= index){
-                continue;
-            }
-            Item temp = inventory[0].get(index);
-            inventory[0].set(index, inventory[0].get(index + 1));
-            inventory[0].set(index + 1, temp);
-            index++;
-        }
-        Weapon weapon = (Weapon) inventory[0].get(index);
-        inventory[0].remove(index);
-        if (Equipment.getWeaponEquipped() != null){
-            inventory[0].add(index, Equipment.getWeaponEquipped());
-        }
-        Equipment.setWeaponEquipped(weapon);
     }
 
     public static void sortWeaponInventory(){
@@ -50,7 +31,7 @@ public class Inventory {
         inventory[0].sort(Comparator.reverseOrder());
     }
     public static void sortArmorInventory(){
-        Collections.sort(inventory[1]);
+        inventory[1].sort(Comparator.reverseOrder());
     }
     public static void sortConsumableInventory(){
         Collections.sort(inventory[2]);
@@ -60,8 +41,8 @@ public class Inventory {
         Inventory.inventory = inventory;
     }
 
-    public static void removeWeapon(int index){
-        inventory[0].remove(index);
+    public static void removeItem(int type, int index){
+        inventory[type].remove(index);
     }
 
     public static void removeNull(){
