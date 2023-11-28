@@ -1,4 +1,4 @@
-package src;/*
+package src.Inventory;/*
 Weapon types:
 Daggers
 Swords
@@ -12,8 +12,6 @@ Bows
 
  */
 
-
-import java.util.LinkedList;
 
 public class Weapon extends Item {
     private int damage;

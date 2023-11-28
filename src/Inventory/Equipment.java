@@ -1,4 +1,4 @@
-package src;
+package src.Inventory;
 
 /*
 Equipment List:
@@ -154,43 +154,43 @@ public class Equipment {
         if (type == Item.ARMOR){
             Armor armor = (Armor) Inventory.inventory[1].get(index);
             Inventory.inventory[type].remove(index);
-            switch (armor.armorType){
-                case Armor.HELMET:
-                    if (Equipment.getHelmetEquipped() != null){
+            switch (armor.armorType) {
+                case Armor.HELMET -> {
+                    if (Equipment.getHelmetEquipped() != null) {
                         Inventory.inventory[type].add(index, Equipment.getHelmetEquipped());
                     }
                     Equipment.setHelmetEquipped(armor);
-                    break;
-                case Armor.GLOVES:
-                    if (Equipment.getGlovesEquipped() != null){
+                }
+                case Armor.GLOVES -> {
+                    if (Equipment.getGlovesEquipped() != null) {
                         Inventory.inventory[type].add(index, Equipment.getGlovesEquipped());
                     }
                     Equipment.setGlovesEquipped(armor);
-                    break;
-                case Armor.CHEST:
-                    if (Equipment.getChestEquipped() != null){
+                }
+                case Armor.CHEST -> {
+                    if (Equipment.getChestEquipped() != null) {
                         Inventory.inventory[type].add(index, Equipment.getChestEquipped());
                     }
                     Equipment.setChestEquipped(armor);
-                    break;
-                case Armor.BOOTS:
-                    if (Equipment.getBootsEquipped() != null){
+                }
+                case Armor.BOOTS -> {
+                    if (Equipment.getBootsEquipped() != null) {
                         Inventory.inventory[type].add(index, Equipment.getBootsEquipped());
                     }
                     Equipment.setBootsEquipped(armor);
-                    break;
-                case Armor.PANTS:
-                    if (Equipment.getPantsEquipped() != null){
+                }
+                case Armor.PANTS -> {
+                    if (Equipment.getPantsEquipped() != null) {
                         Inventory.inventory[type].add(index, Equipment.getPantsEquipped());
                     }
                     Equipment.setPantsEquipped(armor);
-                    break;
-                case Armor.SHIELD:
-                    if (Equipment.getShieldEquipped() != null){
+                }
+                case Armor.SHIELD -> {
+                    if (Equipment.getShieldEquipped() != null) {
                         Inventory.inventory[type].add(index, Equipment.getShieldEquipped());
                     }
                     Equipment.setShieldEquipped(armor);
-                    break;
+                }
             }
         }
     }

@@ -1,4 +1,6 @@
-package src;
+package src.Inventory;
+
+import src.Inventory.Weapon;
 
 import java.util.Comparator;
 

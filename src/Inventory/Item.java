@@ -1,4 +1,4 @@
-package src;
+package src.Inventory;
 
 public abstract class Item implements Comparable<Item> {
     public static final int WEAPON = 0;

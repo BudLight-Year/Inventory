@@ -1,12 +1,15 @@
-package src;
+package src.Collections;
+
+import src.Inventory.Armor;
+import src.Inventory.Inventory;
+import src.Inventory.Item;
+import src.Inventory.Weapon;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.ListIterator;
 import java.util.Scanner;
 
 public class InventoryCollection {
@@ -16,7 +19,7 @@ public class InventoryCollection {
         Scanner in = new Scanner(new FileInputStream(FILE_NAME));
         while (in.hasNextLine()) {
             String line = in.nextLine();
-            String data[] = line.split(",");
+            String[] data = line.split(",");
             int itemType = Integer.parseInt(data[0]);
             if(itemType == Item.WEAPON){
                 int weaponType = WeaponCollection.getType(data[2]);
@@ -49,8 +52,8 @@ public class InventoryCollection {
 
     public static void saveInventory() throws FileNotFoundException {
         PrintStream out = new PrintStream(new FileOutputStream(FILE_NAME));
-        Iterator<Item> it = Inventory.inventory[0].iterator();
-        Iterator<Item> it2 = Inventory.inventory[1].iterator();
+        Iterator<Item> it = Inventory.getInventory()[0].iterator();
+        Iterator<Item> it2 = Inventory.getInventory()[1].iterator();
         while (it.hasNext()) {
             Weapon weapon = (Weapon) it.next();
             String weaponType = null;

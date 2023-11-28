@@ -1,6 +1,5 @@
-package src;
+package src.Inventory;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Inventory {
@@ -15,7 +14,7 @@ public class Inventory {
 
     public static void initialize(){
         for (int i = 0; i < SIZE; i++) {
-            inventory[i] = new LinkedList<Item>();
+            inventory[i] = new LinkedList<>();
         }
     }
     public static void storeItem(Item item){
@@ -43,15 +42,6 @@ public class Inventory {
 
     public static void removeItem(int type, int index){
         inventory[type].remove(index);
-    }
-
-    public static void removeNull(){
-        for (int i = 0; i < inventory[0].size(); i++){
-            if (inventory[0].get(i) == null){
-                inventory[0].remove(i);
-            }
-        }
-
     }
 
     public static void sortAll(){

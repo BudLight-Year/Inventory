@@ -1,13 +1,13 @@
-package src;
+package src.Inventory;
 
-public class Armor extends Item{
+public class Armor extends Item {
 
-    protected static final int HELMET = 0;
-    protected static final int GLOVES = 1;
-    protected static final int CHEST = 2;
-    protected static final int BOOTS = 3;
-    protected static final int PANTS = 4;
-    protected static final int SHIELD = 5;
+    public static final int HELMET = 0;
+    public static final int GLOVES = 1;
+    public static final int CHEST = 2;
+    public static final int BOOTS = 3;
+    public static final int PANTS = 4;
+    public static final int SHIELD = 5;
 
     int armorType;
     int defense;

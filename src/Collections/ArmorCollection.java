@@ -1,22 +1,23 @@
-package src;
+package src.Collections;
+
+import src.Inventory.Armor;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class ArmorCollection {
     public static final String FILE_NAME  = "armors.csv";
-    private static ArrayList<Armor> armorCollection = new ArrayList<>();
+    private static final ArrayList<Armor> armorCollection = new ArrayList<>();
 
     public static void loadArmors() throws FileNotFoundException {
         Scanner in = new Scanner(new FileInputStream(FILE_NAME));
         while (in.hasNextLine()) {
             String line = in.nextLine();
-            String data[] = line.split(",");
+            String[] data = line.split(",");
             String name = data[0];
             int type = getType(data[1]);
             int value = Integer.parseInt(data[2]);
@@ -52,9 +53,7 @@ public class ArmorCollection {
 
     public static void saveWeapons() throws FileNotFoundException {
         PrintStream out = new PrintStream(new FileOutputStream(FILE_NAME));
-        Iterator<Armor> it = armorCollection.iterator();
-        while (it.hasNext()) {
-            Armor armor = it.next();
+        for (Armor armor : armorCollection) {
             String armorType = null;
             switch (armor.getArmorType()) {
                 case 0 -> armorType = "HELMET";

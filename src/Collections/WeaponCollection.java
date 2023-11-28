@@ -1,24 +1,25 @@
-package src;
+package src.Collections;
+
+import src.Inventory.Weapon;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 
 //TODO read csv file of weapons and store them in a data structure
 public class WeaponCollection {
 
     public static final String FILE_NAME  = "weapons.csv";
-    private static ArrayList<Weapon> weaponCollection = new ArrayList<>();
+    private static final ArrayList<Weapon> weaponCollection = new ArrayList<>();
 
     public static void loadWeapons() throws FileNotFoundException {
         Scanner in = new Scanner(new FileInputStream(FILE_NAME));
         while (in.hasNextLine()) {
             String line = in.nextLine();
-            String data[] = line.split(",");
+            String[] data = line.split(",");
             String name = data[0];
             int type = getType(data[1]);
             int value = Integer.parseInt(data[2]);
@@ -50,9 +51,7 @@ public class WeaponCollection {
 
     public static void saveWeapons() throws FileNotFoundException {
         PrintStream out = new PrintStream(new FileOutputStream(FILE_NAME));
-        Iterator<Weapon> it = weaponCollection.iterator();
-        while (it.hasNext()) {
-            Weapon weapon = it.next();
+        for (Weapon weapon : weaponCollection) {
             String weaponType = null;
             switch (weapon.getWeaponType()) {
                 case 0 -> weaponType = "DAGGER";
