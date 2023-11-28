@@ -11,14 +11,13 @@ import java.util.Scanner;
 
 public class InventoryCollection {
     public static final String FILE_NAME  = "inventory.csv";
-    private static ArrayList<Item>[] inventoryCollection = new ArrayList[3];
 
     public static void loadInventory() throws FileNotFoundException {
         Scanner in = new Scanner(new FileInputStream(FILE_NAME));
         while (in.hasNextLine()) {
             String line = in.nextLine();
             String data[] = line.split(",");
-            int itemType = getItemType(data[0]);
+            int itemType = Integer.parseInt(data[0]);
             if(itemType == Item.WEAPON){
                 int weaponType = WeaponCollection.getType(data[2]);
                 String name = data[1];
@@ -37,7 +36,7 @@ public class InventoryCollection {
         in.close();
     }
 
-    private static int getItemType(String data) {
+    public static int getItemType(String data) {
         int type = 5;
         if(data.equalsIgnoreCase("weapon")){
             type = Item.WEAPON;
@@ -62,7 +61,7 @@ public class InventoryCollection {
                 case 3 -> weaponType = "BOW";
                 case 4 -> weaponType = "WAND";
             }
-            out.println(weapon.getName() + "," + weaponType + "," + weapon.getValue() + "," + weapon.getDamage());
+            out.println(Item.WEAPON + "," + weapon.getName() + "," + weaponType + "," + weapon.getValue() + "," + weapon.getDamage());
         }
         while (it2.hasNext()) {
             Armor armor = (Armor) it2.next();
@@ -75,7 +74,7 @@ public class InventoryCollection {
                 case 4 -> armorType = "PANTS";
                 case 5 -> armorType = "SHIELD";
             }
-            out.println(armor.getName() + "," + armorType + "," + armor.getValue() + "," + armor.getdefense() + "," + armor.getResistance());
+            out.println(Item.ARMOR + "," + armor.getName() + "," + armorType + "," + armor.getValue() + "," + armor.getdefense() + "," + armor.getResistance());
         }
         out.close();
     }

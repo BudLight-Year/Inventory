@@ -53,6 +53,12 @@ public class Inventory {
         }
 
     }
+
+    public static void sortAll(){
+        sortArmorInventory();
+        sortWeaponInventory();
+        sortConsumableInventory();
+    }
 }
 
 

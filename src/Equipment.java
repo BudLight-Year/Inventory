@@ -20,6 +20,9 @@ public class Equipment {
     private static Armor pantsEquipped;
     private static Armor bootsEquipped;
 
+    Item[] equipment = new Item[7];
+
+
 
     public static Weapon getWeaponEquipped() {
         return weaponEquipped;
