@@ -12,13 +12,14 @@ public class Armor extends Item {
     int armorType;
     int defense;
     int resistance;
-    int type = Item.ARMOR;
+
 
     public Armor(String name, int armorType, int value, int defense, int resistance) {
         super(name, value);
         this.armorType = armorType;
         this.defense = defense;
         this.resistance = resistance;
+        this.type = Item.ARMOR;
     }
 
     public Armor(Armor armor){
@@ -26,6 +27,7 @@ public class Armor extends Item {
         this.armorType = armor.getArmorType();
         this.defense = armor.getdefense();
         this.resistance = armor.getResistance();
+        this.type = Item.ARMOR;
     }
 
     public int getArmorType() {

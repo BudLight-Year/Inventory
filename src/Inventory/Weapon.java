@@ -26,11 +26,13 @@ public class Weapon extends Item {
         super(name, value);
         this.weaponType = weaponType;
         this.damage = damage;
+        type = Item.WEAPON;
     }
     public Weapon(Weapon weapon){
         super(weapon.getName(), weapon.getValue());
         this.weaponType = weapon.getWeaponType();
         this.damage = weapon.getDamage();
+        type = Item.WEAPON;
     }
 
     @Override
